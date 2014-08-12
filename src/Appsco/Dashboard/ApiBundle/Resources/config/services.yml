@@ -1,0 +1,7 @@
+parameters:
+#    appsco_dashboard_api.example.class: Foo/Bar
+
+services:
+#    appsco_dashboard_api.example:
+#        class: %appsco_dashboard_api.example.class%
+#        arguments: []
