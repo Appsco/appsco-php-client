@@ -2,7 +2,10 @@
 
 namespace Appsco\Dashboard\ApiBundle\DependencyInjection;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
 
 class AppscoDashboardApiExtension extends Extension
 {
@@ -16,6 +19,18 @@ class AppscoDashboardApiExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->setParameter('appsco_dashboard_api.url.scheme', $config['scheme']);
+        $container->setParameter('appsco_dashboard_api.url.domain', $config['domain']);
+        $container->setParameter('appsco_dashboard_api.url.sufix', $config['sufix']);
+        $container->setParameter('appsco_dashboard_api.default_redirect_uri', $config['default_redirect_uri']);
+        $container->setParameter('appsco_dashboard_api.client_id', $config['client_id']);
+        $container->setParameter('appsco_dashboard_api.client_secret', $config['client_secret']);
+        $container->setParameter('appsco_dashboard_api.ca_path', $config['ca_path']);
+        $container->setParameter('appsco_dashboard_api.loose_ssl', $config['loose_ssl']);
+        $container->setParameter('appsco_dashboard_api.auth_type', $config['auth_type']);
+
+        $loader->load('security.yml');
     }
 
 }
