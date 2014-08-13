@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 interface AppscoOAuthInterface
 {
     /**
-     * @return \Appsco\Accounts\ApiBundle\Client\AccountsClient
+     * @return \Appsco\Dashboard\ApiBundle\Client\AccountsClient
      */
     public function getClient();
 

@@ -2,8 +2,8 @@
 
 namespace Appsco\Dashboard\ApiBundle\Security\Core\Authentication\Provider;
 
-use Appsco\Accounts\ApiBundle\Security\Core\Authentication\Token\AppscoToken;
-use Appsco\Accounts\ApiBundle\Security\Core\User\AppscoUserProviderInterface;
+use Appsco\Dashboard\ApiBundle\Security\Core\Authentication\Token\AppscoToken;
+use Appsco\Dashboard\ApiBundle\Security\Core\User\AppscoUserProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -89,7 +89,7 @@ class AppscoAuthenticationProvider implements AuthenticationProviderInterface
             $this->userChecker->checkPostAuth($user);
         }
 
-        $authenticatedToken = new AppscoToken($user, $user->getRoles(), $token->getProfile(), $token->getAccessToken(), $token->getIdToken());
+        $authenticatedToken = new AppscoToken($user, $user->getRoles(), $token->getAccount(), $token->getAccessToken(), $token->getIdToken());
 
         return $authenticatedToken;
     }
@@ -102,7 +102,7 @@ class AppscoAuthenticationProvider implements AuthenticationProviderInterface
     protected function getUser(AppscoToken $token)
     {
         try {
-            $user = $this->userProvider->loadUserByUsername($token->getProfile()->getEmail());
+            $user = $this->userProvider->loadUserByUsername($token->getAccount()->getEmail());
         } catch (UsernameNotFoundException $ex) {
             $user = $this->createUser($token);
         }

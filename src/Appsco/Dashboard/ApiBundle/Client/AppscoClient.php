@@ -245,7 +245,7 @@ class AppscoClient
         }
 
         /** @var AccessData $result */
-        $result = $this->serializer->deserialize($json, 'Appsco\Accounts\ApiBundle\Model\AccessData', 'json');
+        $result = $this->serializer->deserialize($json, 'Appsco\Dashboard\ApiBundle\Model\AccessData', 'json');
 
         $this->setAccessToken($result->getAccessToken());
 
@@ -284,7 +284,7 @@ class AppscoClient
                 $url, $this->accessToken, $this->httpClient->getErrorText(), $json));
         }
 
-        return $this->serializer->deserialize($json, 'Appsco\Accounts\ApiBundle\Model\Profile', 'json');
+        return $this->serializer->deserialize($json, 'Appsco\Dashboard\ApiBundle\Model\Account', 'json');
     }
 
     /**
@@ -309,7 +309,7 @@ class AppscoClient
         $json = $this->makeRequest($url);
         $this->setAuthType($old);
 
-        return $this->serializer->deserialize($json, 'Appsco\Accounts\ApiBundle\Model\CertificateList', 'json');
+        return $this->serializer->deserialize($json, 'Appsco\Dashboard\ApiBundle\Model\CertificateList', 'json');
     }
 
     /**

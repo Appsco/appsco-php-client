@@ -20,7 +20,7 @@ class CertificateList
 
     /**
      * @var array|Certificate[]
-     * @JMS\Type("array<Appsco\Accounts\ApiBundle\Model\Certificate>")
+     * @JMS\Type("array<Appsco\Dashboard\ApiBundle\Model\Certificate>")
      */
     protected $certificates = array();
 
@@ -51,7 +51,7 @@ class CertificateList
 
 
     /**
-     * @return \Appsco\Accounts\ApiBundle\Model\Certificate[]
+     * @return \Appsco\Dashboard\ApiBundle\Model\Certificate[]
      */
     public function getCertificates()
     {
@@ -75,7 +75,7 @@ class CertificateList
     }
 
     /**
-     * @param \Appsco\Accounts\ApiBundle\Model\Certificate[]|array $certificates
+     * @param \Appsco\Dashboard\ApiBundle\Model\Certificate[]|array $certificates
      * @return $this|CertificateList
      */
     public function setCertificates($certificates)
