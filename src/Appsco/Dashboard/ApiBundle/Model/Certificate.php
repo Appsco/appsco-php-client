@@ -22,6 +22,12 @@ class Certificate
      * @var string
      * @JMS\Type("string")
      */
+    protected $fingerprint;
+
+    /**
+     * @var string
+     * @JMS\Type("string")
+     */
     protected $certificate;
 
 
@@ -50,7 +56,6 @@ class Certificate
 
     /**
      * @return \DateTime
-     * @JMS\Type("DateTime<'Y-m-d'>")
      */
     public function getValidFrom()
     {
@@ -59,11 +64,28 @@ class Certificate
 
     /**
      * @return \DateTime
-     * @JMS\Type("DateTime<'Y-m-d'>")
      */
     public function getValidTo()
     {
         return $this->validTo;
+    }
+
+    /**
+     * @param string $fingerprint
+     * @return $this|Certificate
+     */
+    public function setFingerprint($fingerprint)
+    {
+        $this->fingerprint = $fingerprint;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFingerprint()
+    {
+        return $this->fingerprint;
     }
 
     /**
