@@ -6,7 +6,7 @@ without getting their passwords. Applications using granted authorization tokens
 and impersonate users that gave the authorization for the given scope. Users can revoke given access token
 at any time.
 
-All applications has to be registered on [Appsco](https://my.dev.appsco.com) in order to be able
+All applications has to be registered on [Appsco](https://my-dev.appsco.com) in order to be able
 to use its API. Each registered app is given a unique Client ID and Client Secret. The Client Secret should not be
 shared and given to any third parties.
 
@@ -28,7 +28,7 @@ Following is a description of the OAuth2 for web applications.
 1. Redirect users to request Appsco access
 ------------------------------------------
 
-    GET https://my.dev.appsco.com/oauth/authorize
+    GET https://my-dev.appsco.com/oauth/authorize
 
 
 Parameters
@@ -52,7 +52,7 @@ aborted.
 
 Exchange the temporary code for access token.
 
-    POST https://my.dev.appsco.com/api/v1/token/get
+    POST https://my-dev.appsco.com/api/v1/token/get
 
 Parameters
 ----------
@@ -81,7 +81,7 @@ The response will take the following form
 The obtained access token allows you to make requests to the Appsco API on behalf of the user that gave
 you the authorization.
 
-    GET https://my.dev.appsco.com/api/v1/profile/me?access_token=...
+    GET https://my-dev.appsco.com/api/v1/profile/me?access_token=...
 
 You can pass the token as the query param as shown above, but safer and cleaner way is to include it in the
 Authorization header
@@ -90,7 +90,7 @@ Authorization header
 
 For example, with curl you can set the Authorization header with following command:
 
-    curl -H "Authorization: token THE-OAUTH-ACCESS-TOKEN" https://my.dev.appsco.com/api/v1/profile/me
+    curl -H "Authorization: token THE-OAUTH-ACCESS-TOKEN" https://my-dev.appsco.com/api/v1/profile/me
 
 
 Appsco OAuth Client
