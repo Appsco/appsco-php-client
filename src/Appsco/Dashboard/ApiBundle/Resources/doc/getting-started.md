@@ -21,6 +21,12 @@ Installation in easy 9 steps:
 8. [Security configuration](#step-8-security-configuration)
 9. [Failure path](#step-9-failure-path)
 
+Appsco Environments
+-------------------
+
+Development environment is https://my-dev.appsco.com and
+Production environment is https://appsco.com
+
 
 Step 1: Download appsco/appsco-php-client with composer
 -------------------------------------------------------
@@ -58,7 +64,7 @@ public function registerBundles()
 Step 3: Acquire your client_id and client_secret
 ------------------------------------------------
 
-Register your app at [Appsco](https://my.dev.appsco.com) and copy it's client_id and client_secret.
+Register your app at [Appsco](https://my-dev.appsco.com) and copy it's client_id and client_secret.
 
 Note that authorization url of the registered app must match the url where from you will be redirecting
 users to Appsco for authentication.
@@ -77,7 +83,7 @@ appsco_dashboard_api:
     client_secret: 1gexsuuljv1ck0w40g048o8kc080so8ocgw8scsg404o4og4co18ctqsp1770kgc8g48840k8wwk04wccgcskwko40gookgccsgw
 ```
 
-By default the bundle will use https://my.dev.appsco.com. For details check
+By default the bundle will use https://my-dev.appsco.com. For details check
 the [configuration reference](configuration.md)
 
 
