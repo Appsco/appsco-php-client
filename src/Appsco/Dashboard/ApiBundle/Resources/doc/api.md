@@ -19,7 +19,7 @@ Profile Read
 
 Returns profile info for specified user.
 
-    GET https://my.dev.appsco.com/api/v1/profile/:id
+    GET https://my-dev.appsco.com/api/v1/profile/:id
 
 Parameters
  * :id - the Appsco ID of the user, or 'me' as alias to the user that gave the authorization
@@ -36,7 +36,7 @@ Response
     "gender": "m",
     "country": "NO",
     "phone": "00123123123",
-    "picture_url": "https://my.dev.appsco.com/picture/123"
+    "picture_url": "https://my-dev.appsco.com/picture/123"
 }
 ```
 
@@ -62,7 +62,7 @@ Certificate get
 
 Returns X509 certificates for specified OAuth application registered at Appsco.
 
-    GET https://my.dev.appsco.com/api/v1/oauthapp/:client_id/certificates
+    GET https://my-dev.appsco.com/api/v1/oauthapp/:client_id/certificates
 
 Parameters:
 
