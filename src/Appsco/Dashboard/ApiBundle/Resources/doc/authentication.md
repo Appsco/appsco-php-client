@@ -56,7 +56,7 @@ Some API methods, mostly those that change data, only supports POST HTTP method.
 
 ### Access Token in Authorization Header
 
-    GET https://my.dev.appsco.com/api/v1/profile/me
+    GET https://my-dev.appsco.com/api/v1/profile/me
     Authorization: token 6b28dvwxr3ocs0ogg8ck848gg0w4cw0oc0w8w4sgos0
 
 
@@ -64,18 +64,18 @@ Some API methods, mostly those that change data, only supports POST HTTP method.
 
 ### Access Token in Request parameter
 
-    GET https://my.dev.appsco.com/api/v1/profile/me?access_token=6b28dvwxr3ocs0ogg8ck848gg0w4cw0oc0w8w4sgos0
+    GET https://my-dev.appsco.com/api/v1/profile/me?access_token=6b28dvwxr3ocs0ogg8ck848gg0w4cw0oc0w8w4sgos0
 
 
 ### Basic Authentication
 
-    GET https://my.dev.appsco.com/api/v1/profile/me
+    GET https://my-dev.appsco.com/api/v1/profile/me
     Authorization: Basic base64(ClientID:ClientPassword)
 
 
 ### Client ID and Client Secret in Request parameter
 
-    POST https://my.dev.appsco.com/api/v1/profile/me
+    POST https://my-dev.appsco.com/api/v1/profile/me
     client_id=6b28dvwxr3ocs0ogg8ck848gg0w4cw0oc0w8w4sgos0
     client_secret=0w8w4sgos6b28dvwxr3ocs0ogg8ck848gg0w4cw0oc0w8w428dvwxr3ocs0ogg8ck848gg0w4cw0oc
 
