@@ -24,8 +24,9 @@ Installation in easy 9 steps:
 Appsco Environments
 -------------------
 
-Development environment is https://my-dev.appsco.com and
-Production environment is https://appsco.com
+Development environment is https://my-dev.appsco.com and production environment is https://appsco.com
+
+These two environments are distinct, and not shared and you have to register your apps separately.
 
 
 Step 1: Download appsco/appsco-php-client with composer
