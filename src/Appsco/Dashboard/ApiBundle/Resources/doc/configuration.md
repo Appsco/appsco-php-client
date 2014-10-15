@@ -27,7 +27,7 @@ Full configuration with default values
 appsco_dashboard_api:
     # appsco address you will use
     scheme: https
-    domain: my.dev.appsco.com
+    domain: my-dev.appsco.com
 
     # data from the application registration
     default_redirect_uri: ''
