@@ -19,7 +19,7 @@ $appscoClient = new \Appsco\Dashboard\ApiBundle\Client\AppscoClient(
     $httpClient,
     $jmsSerializer,
     'https',
-    'my.dev.appsco.com',
+    'my-dev.appsco.com',
     '',
     'http://my-site.com/appsco/callback',
     $clientId,
