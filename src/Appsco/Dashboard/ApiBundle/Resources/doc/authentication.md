@@ -53,6 +53,11 @@ Regardless if you use Access Token, or Client ID and Client Secret, you can pass
 Some API methods, mostly those that change data, only supports POST HTTP method.
 
 
+Authentication with username and password
+-----------------------------------------
+
+Instead of Client ID and Client Secret of an OAuth application it is also possible to use username and password of an Appsco user account. Usage is the same as with Client ID and Client Secret, and imersionated user will be the user which username is used. 
+
 
 ### Access Token in Authorization Header
 
