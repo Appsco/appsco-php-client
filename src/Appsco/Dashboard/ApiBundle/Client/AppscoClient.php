@@ -5,6 +5,7 @@ namespace Appsco\Dashboard\ApiBundle\Client;
 use Appsco\Dashboard\ApiBundle\Model\AccessData;
 use Appsco\Dashboard\ApiBundle\Model\Account;
 use Appsco\Dashboard\ApiBundle\Model\CertificateList;
+use Appsco\Dashboard\ApiBundle\Model\Dashboard;
 use Appsco\Dashboard\ApiBundle\OAuth\Scopes;
 use BWC\Share\Net\HttpClient\HttpClientInterface;
 use BWC\Share\Net\HttpStatusCode;
@@ -250,6 +251,41 @@ class AppscoClient
         $this->setAccessToken($result->getAccessToken());
 
         return $result;
+    }
+
+    /**
+     * @return Dashboard[]
+     */
+    public function getDashboardList()
+    {
+        $url = sprintf('%s://%s%s/api/v1/dashboard/list', $this->scheme, $this->domain, $this->sufix);
+
+        if ($this->logger) {
+            $this->logger->info('Appsco.AppscoClient.dashboardList', array(
+                'url' => $url,
+                'clientId' => $this->getClientId(),
+                'client_secret' => $this->getClientSecret(),
+              ));
+        }
+
+        $oldAuthType = $this->getAuthType();
+        $this->setAuthType(self::AUTH_TYPE_ACCESS_TOKEN);
+
+        $json = $this->makeRequest(
+            $url,
+            'get'
+        );
+
+        if ($this->logger) {
+            $this->logger->info('Appsco.AppscoClient.dashboardList', array(
+                'result' => $json,
+                'statusCode' => $this->httpClient->getStatusCode(),
+            ));
+        }
+
+        $this->setAuthType($oldAuthType);
+
+        return $this->serializer->deserialize($json, 'array<Appsco\Dashboard\ApiBundle\Model\Dashboard>', 'json');
     }
 
 
