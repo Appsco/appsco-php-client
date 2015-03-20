@@ -258,7 +258,7 @@ class AppscoClient
      */
     public function getDashboardList()
     {
-        $url = sprintf('%s://%s%s/api/v1/dashboard/list', $this->scheme, $this->domain, $this->sufix);
+        $url = sprintf('%s://%s%s/api/v1/dashboard', $this->scheme, $this->domain, $this->sufix);
 
         if ($this->logger) {
             $this->logger->info('Appsco.AppscoClient.dashboardList', array(
