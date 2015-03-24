@@ -288,6 +288,41 @@ class AppscoClient
         return $this->serializer->deserialize($json, 'array<Appsco\Dashboard\ApiBundle\Model\Dashboard>', 'json');
     }
 
+    
+    /**
+     * Creates a dashboard icon
+     *
+     * @param int $dashboardRoleId
+     * @param int $appTemplateId
+     */
+    public function addDashboardIcon($dashboardRoleId, $appTemplateId)
+    {
+        $url = sprintf('%s://%s%s/api/v1/dashboard/%s/application', $this->scheme, $this->domain, $this->sufix, $dashboardRoleId);
+
+        if ($this->logger) {
+            $this->logger->info('Appsco.AppscoClient.addDashboardIcon', array(
+                'url' => $url,
+                'clientId' => $this->getClientId(),
+                'client_secret' => $this->getClientSecret(),
+            ));
+        }
+
+        $oldAuthType = $this->getAuthType();
+        $this->setAuthType(self::AUTH_TYPE_ACCESS_TOKEN);
+
+        $json = $this->makeRequest($url, 'post', array(), array(
+            'application_template_id' => $appTemplateId,
+        ));
+
+        if ($this->logger) {
+            $this->logger->info('Appsco.AppscoClient.addDashboardIcon', array(
+                'result' => $json,
+                'statusCode' => $this->httpClient->getStatusCode(),
+            ));
+        }
+
+        $this->setAuthType($oldAuthType);
+    }
 
     /**
      * @param string $id
