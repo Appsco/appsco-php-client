@@ -13,7 +13,7 @@ use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class AppscoClient 
+class AppscoClient
 {
     const AUTH_TYPE_ACCESS_TOKEN = 1;
     const AUTH_TYPE_BASIC_AUTH = 2;
@@ -265,7 +265,7 @@ class AppscoClient
                 'url' => $url,
                 'clientId' => $this->getClientId(),
                 'client_secret' => $this->getClientSecret(),
-              ));
+            ));
         }
 
         $oldAuthType = $this->getAuthType();
@@ -288,7 +288,39 @@ class AppscoClient
         return $this->serializer->deserialize($json, 'array<Appsco\Dashboard\ApiBundle\Model\Dashboard>', 'json');
     }
 
-    
+    public function getDashboardIconList(Dashboard $dashboard)
+    {
+        $url = sprintf('%s://%s%s/api/v1/dashboard/%d/icon ', $this->scheme, $this->domain, $this->sufix, $dashboard->getRoleId());
+
+        if ($this->logger) {
+            $this->logger->info('Appsco.AppscoClient.dashboardIconList', array(
+                'url' => $url,
+                'clientId' => $this->getClientId(),
+                'client_secret' => $this->getClientSecret(),
+            ));
+        }
+
+        $oldAuthType = $this->getAuthType();
+        $this->setAuthType(self::AUTH_TYPE_ACCESS_TOKEN);
+
+        $json = $this->makeRequest(
+            $url,
+            'get'
+        );
+
+        if ($this->logger) {
+            $this->logger->info('Appsco.AppscoClient.dashboardList', array(
+                'result' => $json,
+                'statusCode' => $this->httpClient->getStatusCode(),
+            ));
+        }
+
+        $this->setAuthType($oldAuthType);
+
+        return $this->serializer->deserialize($json, 'array<Appsco\Dashboard\ApiBundle\Model\DashboardIcon>', 'json');
+    }
+
+
     /**
      * Creates a dashboard icon
      *
