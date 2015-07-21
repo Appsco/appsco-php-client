@@ -8,7 +8,7 @@
     }, 
     "require": {
         "symfony/symfony": "~2.2",
-        "jms/serializer-bundle": "~0.13",
+        "jms/serializer-bundle": "1.0.*",
         "appsco/component-share": "*"
     },
     "require-dev": {
