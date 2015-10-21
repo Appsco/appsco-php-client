@@ -48,7 +48,7 @@ Check bundle [releases](https://github.com/Appsco/appsco-php-client/releases) fo
 Step 2: Load the bundle to kernel
 ---------------------------------
 
-Add AppscoDashboardApiBundle to the kernel of your project:
+Add ``AppscoDashboardApiBundle`` and ``JMSSerializerBundle`` to the kernel of your project:
 
 ``` php
 // app/AppKernel.php
@@ -57,6 +57,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
+        new JMS\SerializerBundle\JMSSerializerBundle(),
         new Appsco\Dashboard\ApiBundle\AppscoDashboardApiBundle(),
     );
 }
