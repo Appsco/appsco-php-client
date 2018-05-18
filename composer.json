@@ -7,8 +7,8 @@
         "psr-0": { "Appsco\\Dashboard\\ApiBundle\\": "src/" }
     }, 
     "require": {
-        "symfony/symfony": "~2.2",
-        "jms/serializer-bundle": "1.0.*",
+        "symfony/symfony": "~2.2 || ^3.0",
+        "jms/serializer-bundle": ">=1.0",
         "appsco/component-share": "*"
     },
     "require-dev": {

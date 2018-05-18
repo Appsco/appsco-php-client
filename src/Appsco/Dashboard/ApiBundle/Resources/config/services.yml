@@ -13,26 +13,26 @@ services:
     appsco_dashboard_api.http_client:
         class: BWC\Share\Net\HttpClient\HttpClient
         calls:
-            - [ setCaPath, [%appsco_dashboard_api.ca_path%] ]
-            - [ looseSslCheck, [%appsco_dashboard_api.loose_ssl%] ]
+            - [ setCaPath, ['%appsco_dashboard_api.ca_path%'] ]
+            - [ looseSslCheck, ['%appsco_dashboard_api.loose_ssl%'] ]
         public: false
 
     appsco_dashboard_api.client:
         class: Appsco\Dashboard\ApiBundle\Client\AppscoClient
         arguments:
-            - @appsco_dashboard_api.http_client
-            - @jms_serializer
-            - %appsco_dashboard_api.url.scheme%
-            - %appsco_dashboard_api.url.domain%
-            - %appsco_dashboard_api.url.sufix%
-            - %appsco_dashboard_api.default_redirect_uri%
-            - %appsco_dashboard_api.client_id%
-            - %appsco_dashboard_api.client_secret%
-            - %appsco_dashboard_api.auth_type%
-            - @logger
+            - '@appsco_dashboard_api.http_client'
+            - '@jms_serializer'
+            - '%appsco_dashboard_api.url.scheme%'
+            - '%appsco_dashboard_api.url.domain%'
+            - '%appsco_dashboard_api.url.sufix%'
+            - '%appsco_dashboard_api.default_redirect_uri%'
+            - '%appsco_dashboard_api.client_id%'
+            - '%appsco_dashboard_api.client_secret%'
+            - '%appsco_dashboard_api.auth_type%'
+            - '@logger'
 
     appsco_dashboard_api.oauth:
         class: Appsco\Dashboard\ApiBundle\OAuth\AppscoOAuth
         arguments:
-            - @appsco_dashboard_api.client
-            - @session
+            - '@appsco_dashboard_api.client'
+            - '@session'
