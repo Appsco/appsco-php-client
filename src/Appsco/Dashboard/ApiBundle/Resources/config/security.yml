@@ -10,47 +10,47 @@ parameters:
 
 services:
     security.authentication.listener.appsco:
-        class: %security.authentication.listener.appsco.class%
+        class: '%security.authentication.listener.appsco.class%'
         parent: security.authentication.listener.abstract
         abstract: true
         calls:
-            - [ setRelyingParty, [@appsco_dashboard_api.relying_party.main] ]
+            - [ setRelyingParty, ['@appsco_dashboard_api.relying_party.main'] ]
 
     security.authentication.provider.appsco:
-        class: %security.authentication.provider.appsco.class%
+        class: '%security.authentication.provider.appsco.class%'
         arguments:
             - ~ # user provider
-            - @security.user_checker
+            - '@security.user_checker'
         abstract: true
 
     security.authentication.appsco_entry_point:
-        class: %security.authentication.appsco_entry_point.class%
+        class: '%security.authentication.appsco_entry_point.class%'
         arguments:
-            - @security.http_utils
+            - '@security.http_utils'
             - ~ # entry url
         abstract: true
 
 
     appsco_dashboard_api.relying_party.main:
-        class: %appsco_dashboard_api.relying_party.main.class%
+        class: '%appsco_dashboard_api.relying_party.main.class%'
         calls:
-            - [ add, [@appsco_dashboard_api.relying_party.oauth_start] ]
-            - [ add, [@appsco_dashboard_api.relying_party.oauth_callback] ]
+            - [ add, ['@appsco_dashboard_api.relying_party.oauth_start'] ]
+            - [ add, ['@appsco_dashboard_api.relying_party.oauth_callback'] ]
         public: false
 
     appsco_dashboard_api.relying_party.oauth_start:
-        class: %appsco_dashboard_api.relying_party.start.class%
+        class: '%appsco_dashboard_api.relying_party.start.class%'
         arguments:
-            - @security.http_utils
-            - @appsco_dashboard_api.oauth
-            - %appsco_dashboard_api.oauth.scope%
-            - %appsco_dashboard_api.oauth.redirect_url%
+            - '@security.http_utils'
+            - '@appsco_dashboard_api.oauth'
+            - '%appsco_dashboard_api.oauth.scope%'
+            - '%appsco_dashboard_api.oauth.redirect_url%'
         public: false
 
     appsco_dashboard_api.relying_party.oauth_callback:
-        class: %appsco_dashboard_api.relying_party.callback.class%
+        class: '%appsco_dashboard_api.relying_party.callback.class%'
         arguments:
-            - @security.http_utils
-            - @appsco_dashboard_api.oauth
-            - %appsco_dashboard_api.default_redirect_uri%
+            - '@security.http_utils'
+            - '@appsco_dashboard_api.oauth'
+            - '%appsco_dashboard_api.default_redirect_uri%'
         public: false
